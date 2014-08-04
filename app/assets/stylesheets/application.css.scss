@@ -10,6 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require font-awesome
  *= require_self
  */
+
+@import 'reset';
+@import '_variables';
+@import 'bourbon';
+@import 'neat';
+
+$mobile: new-breakpoint(min-width 320px max-width 960px 12);
+$desktop: new-breakpoint(min-width 960px 12);
+
+@import 'layouts/layout';
+
+@import 'typography';

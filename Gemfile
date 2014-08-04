@@ -50,5 +50,6 @@ gem 'pry'
 
 gem 'enumerize'
 
-gem 'formtastic'
+gem 'rspec-rails'
+gem 'factory_girl_rails'
 

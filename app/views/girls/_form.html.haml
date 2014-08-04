@@ -1,5 +1,27 @@
 = form_for @girl, html: { id: 'girl-form', multipart: true } do |f|
+  - if @girl.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@girl.errors.count, "error")
+        prohibited this product from being saved:
+      %ul
+        - @girl.errors.full_messages.each do |message|
+          %li= message
   %section.inputs
     %section.input
-      = f.label :remote_photo_url
+      = f.label :first_name
+      = f.text_field :first_name
+    %section.input
+      = f.label :last_name
+      = f.text_field :last_name
+    %section.input
+      = f.label :description
+      = f.text_area :description
+    %section.input
+      = f.label :vk
+      = f.text_field :vk
+    %section.input
+      = f.label "photo url"
       = f.text_field :remote_photo_url
+  %section.actions
+    = f.submit 'Создать грязнульку', class: 'button'
