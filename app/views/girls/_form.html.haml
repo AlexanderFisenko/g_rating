@@ -1,0 +1,5 @@
+= form_for @girl, html: { id: 'girl-form', multipart: true } do |f|
+  %section.inputs
+    %section.input
+      = f.label :remote_photo_url
+      = f.text_field :remote_photo_url

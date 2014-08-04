@@ -216,6 +216,7 @@ DEPENDENCIES
   devise
   enumerize
   font-awesome-rails (~> 4.0.3)
+  formtastic
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails

@@ -27,7 +27,7 @@ gem 'spring',        group: :development
 
 gem 'sqlite3', :group => [:development, :test]
 
-group :production do 
+group :production do
   gem 'thin'
   gem 'pg'
   gem 'rails_12factor'
@@ -49,4 +49,6 @@ gem 'rmagick'
 gem 'pry'
 
 gem 'enumerize'
+
+gem 'formtastic'
 
