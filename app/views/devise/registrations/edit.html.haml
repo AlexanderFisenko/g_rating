@@ -31,6 +31,6 @@
     %i (we need your current password to confirm your changes)
     %br/
     = f.password_field :current_password, autocomplete: "off"
-  %div= f.submit "Update"
+  %div= f.submit "Update", class: 'button'
 
 = link_to "Back", :back

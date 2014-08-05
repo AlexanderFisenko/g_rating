@@ -1,1 +1,9 @@
-sfff
+%article#girls-index
+  %h1
+    Список девушек:
+  %table
+    - @girls.each do |girl|
+      %tr
+        %td
+          = link_to girl.name, girl
+      

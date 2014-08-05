@@ -24,4 +24,7 @@
       = f.label "photo url"
       = f.text_field :remote_photo_url
   %section.actions
-    = f.submit 'Создать грязнульку', class: 'button'
+    - if controller.action_name == "create"
+      = f.submit 'Создать грязнульку', class: 'button'
+    - else
+      = f.submit 'Обновить грязнульку', class: 'button'

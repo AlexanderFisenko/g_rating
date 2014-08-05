@@ -46,6 +46,6 @@ class GirlsController < ApplicationController
     end
 
     def girl_params
-      params.require(:girl).permit(:name, :remote_photo_url, :remote_photo_url)
+      params.require(:girl).permit(:first_name, :last_name, :description, :vk, :remote_photo_url)
     end
 end

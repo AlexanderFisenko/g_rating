@@ -1,1 +1,15 @@
-s
+%article#girl
+  %h1
+    = @girl.name
+  %section.info
+    %section.attribute
+      %h2 Описание:
+      = @girl.description
+    %section.attribute
+      = link_to "страница в вк", @girl.vk
+    %section.attribute
+      = image_tag @girl.photo.url(:small)
+
+  %section.nav
+    = link_to "list", girls_path
+    = link_to "edit", edit_girl_path(@girl)
