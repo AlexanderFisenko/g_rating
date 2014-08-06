@@ -19,12 +19,18 @@
       = f.text_area :description
     %section.input
       = f.label :vk
-      = f.text_field :vk
+      = f.url_field :vk
     %section.input
       = f.label "photo url"
       = f.text_field :remote_photo_url
+
+    = f.fields_for :votes do |vote_form|
+      = vote_form.label :value
+      %br
+      = vote_form.text_field :value
+
   %section.actions
-    - if controller.action_name == "create"
+    - if controller.action_name == "new"
       = f.submit 'Создать грязнульку', class: 'button'
     - else
       = f.submit 'Обновить грязнульку', class: 'button'

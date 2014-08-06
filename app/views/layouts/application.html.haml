@@ -11,8 +11,6 @@
         - if user_signed_in?
           What's up,
           = current_user.name
-          %span
-          ?
           %section.photo
             = image_tag current_user.photo.url(:small)
           = link_to "Edit profile", edit_user_registration_path

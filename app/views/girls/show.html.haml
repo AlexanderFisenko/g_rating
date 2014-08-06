@@ -10,6 +10,19 @@
     %section.attribute
       = image_tag @girl.photo.url(:small)
 
+    - if @girl.has_been_voted?(current_user)
+      - if @girl.ready_for_vote_calculating?
+        %section.attribute{id: "rank"}
+          Rank:
+          = @girl.rank
+      %section.attribute
+        = button_to "Change vote", edit_girl_vote_path(@girl, @vote), method: :get, class: 'button'
+
+    - else
+      %section.attribute
+        = button_to "Create vote", new_girl_vote_path(@girl, @vote), method: :get, class: 'button'
+
+
   %section.nav
     = link_to "list", girls_path
     = link_to "edit", edit_girl_path(@girl)

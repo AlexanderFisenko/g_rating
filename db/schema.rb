@@ -11,25 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804060707) do
-
-  create_table "admin_users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+ActiveRecord::Schema.define(version: 20140805081802) do
 
   create_table "girls", force: true do |t|
     t.string   "first_name"
@@ -61,5 +43,16 @@ ActiveRecord::Schema.define(version: 20140804060707) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "girl_id"
+    t.float    "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["girl_id"], name: "index_votes_on_girl_id"
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end

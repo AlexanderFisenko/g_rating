@@ -1,0 +1,11 @@
+= form_for [@girl, @vote] do |f|
+  %section.inputs
+    %section.input
+      = f.label :value, "Rating"
+      = f.text_field :value
+
+  %section.actions
+    - if controller.action_name == "new"
+      = f.submit 'Create', class: 'button'
+    - else
+      = f.submit 'Update', class: 'button'
