@@ -9,8 +9,6 @@ class Girl < ActiveRecord::Base
   validates :last_name,  format: { with: /\A[а-яА-Я]+\z/, message: "only allows letters" }, presence: true, uniqueness: true, uniqueness: { case_sensitive: false }
   validates :vk, presence: true, uniqueness: true
 
-  accepts_nested_attributes_for :votes
-
 
   def name
     [first_name, last_name].join(' ')
