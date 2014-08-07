@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :photo, UserPhotoUploader
 
-  has_many :votes
+  has_many :votes, dependent: :destroy
+  has_many :girls, through: :votes
 
 end

@@ -1,28 +1,47 @@
 %article#girl
   %h1
     = @girl.name
+  %section.nav
+    = link_to "list", girls_path
+    = link_to "edit", edit_girl_path(@girl)
   %section.info
     %section.attribute
       %h2 Описание:
       = @girl.description
     %section.attribute
-      = link_to "страница в вк", @girl.vk
-    %section.attribute
-      = image_tag @girl.photo.url(:small)
+      = link_to image_tag(@girl.photo.url(:small)), @girl.vk
 
     - if @girl.has_been_voted?(current_user)
       - if @girl.ready_for_vote_calculating?
         %section.attribute{id: "rank"}
-          Rank:
+          Общий балл:
           = @girl.rank
       %section.attribute
-        = button_to "Change vote", edit_girl_vote_path(@girl, @vote), method: :get, class: 'button'
+        = button_to "Перераскидать", edit_girl_vote_path(@girl, @vote), method: :get, class: 'button'
 
     - else
       %section.attribute
-        = button_to "Create vote", new_girl_vote_path(@girl, @vote), method: :get, class: 'button'
+        = button_to "Раскидать", new_girl_vote_path(@girl, @vote), method: :get, class: 'button'
 
+  - if @girl.ready_for_vote_calculating?
+    %section.users-votes
+      - @users.each do |user|
+        %section.vote
+          %p #{user.name}:
+          %p #{@girl.votes.find_by(user_id: user.id).value} баллов
+          %p Аргументация:
+          %p= @girl.votes.find_by(user_id: user.id).text
+  - else
+    - if @vote
+      %section.attribute
+        %p #{@vote.value} баллов
+        %p=@vote.text
+    - else
+      %p Раскидай ее быстрей!
 
-  %section.nav
-    = link_to "list", girls_path
-    = link_to "edit", edit_girl_path(@girl)
+    %section.not-voted-users
+      %h1 Еще не раскидали:
+      - @girl.not_voted_users.each do |not_voted_user|
+        %section.not-voted-user
+          = not_voted_user.name
+

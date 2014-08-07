@@ -25,9 +25,13 @@
       = f.text_field :remote_photo_url
 
     = f.fields_for :votes do |vote_form|
-      = vote_form.label :value
-      %br
-      = vote_form.text_field :value
+      %section.input
+        = vote_form.label :value
+        %br
+        = vote_form.text_field :value
+      %section.input
+        = vote_form.label :text, "Argument"
+        = vote_form.text_area :text
 
   %section.actions
     - if controller.action_name == "new"

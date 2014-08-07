@@ -7,6 +7,7 @@ class GirlsController < ApplicationController
 
   def show
     @vote = current_user.votes.where(girl_id: @girl.id).first
+    @users = User.all
   end
 
   def new
@@ -19,6 +20,7 @@ class GirlsController < ApplicationController
 
   def create
     @girl = Girl.new(girl_params)
+    @girl.votes.first.user_id = current_user.id
 
     if @girl.save
       redirect_to @girl, notice: 'A new slut was successfully created.'
@@ -48,6 +50,6 @@ class GirlsController < ApplicationController
     end
 
     def girl_params
-      params.require(:girl).permit(:first_name, :last_name, :description, :vk, :remote_photo_url, :votes_attributes)
+      params.require(:girl).permit(:first_name, :last_name, :description, :vk, :remote_photo_url, votes_attributes: [:value, :text])
     end
 end
