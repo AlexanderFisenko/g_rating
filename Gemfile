@@ -53,3 +53,4 @@ gem 'enumerize'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
 
+gem 'foundation-rails'
