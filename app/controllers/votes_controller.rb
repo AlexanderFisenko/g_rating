@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: [:edit, :update]
   before_action :set_girl
+  before_action :authenticate_user!
 
   def new
     @vote = Vote.new

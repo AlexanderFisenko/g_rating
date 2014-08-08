@@ -1,5 +1,6 @@
 class GirlsController < ApplicationController
   before_action :set_girl, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @girls = Girl.all
