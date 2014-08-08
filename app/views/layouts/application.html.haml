@@ -30,11 +30,16 @@
             %li
               = link_to "Login", new_user_session_path
 
+    - if notice
+      %section.flash
+        %div.alert-box.success.radius
+          = notice
+    - if alert
+      %section.flash
+        %div.alert-box.alert.radius
+          = alert
 
-    %section.flash
-      %p.notice= notice
-      %p.alert= alert
+    %section#body
+      = yield
 
-    = yield
-
-    = javascript_include_tag "application"
+      = javascript_include_tag "application"

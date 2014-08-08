@@ -1,4 +1,6 @@
 %article#girls-index
+  %section.nav
+    = button_to 'Create girl', new_girl_path, method: :get, class: "small button radius"
   %h1
     Список девушек:
   %table
@@ -6,6 +8,3 @@
       %tr
         %td
           = link_to girl.name, girl
-
-  %section.nav
-    = button_to 'Create girl', new_girl_path, method: :get
