@@ -8,11 +8,11 @@ class GirlsController < ApplicationController
 
   def show
     @vote = current_user.votes.where(girl_id: @girl.id).first
+    @users = User.all
   end
 
   def new
     @girl = Girl.new
-    1.times { @girl.votes.build }
   end
 
   def edit
@@ -49,6 +49,6 @@ class GirlsController < ApplicationController
     end
 
     def girl_params
-      params.require(:girl).permit(:first_name, :last_name, :description, :vk, :remote_photo_url, :votes_attributes)
+      params.require(:girl).permit(:first_name, :last_name, :description, :vk, :remote_photo_url)
     end
 end

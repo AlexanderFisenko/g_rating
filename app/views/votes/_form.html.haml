@@ -3,6 +3,9 @@
     %section.input
       = f.label :value, "Rating"
       = f.text_field :value
+    %section.input
+      = f.label :text, "Argument"
+      = f.text_area :text
 
   %section.actions
     - if controller.action_name == "new"

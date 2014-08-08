@@ -87,6 +87,9 @@ GEM
       railties (>= 3.2, < 5.0)
     formtastic (2.3.0.rc3)
       actionpack (>= 3.0)
+    foundation-rails (5.3.3.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -239,6 +242,7 @@ DEPENDENCIES
   enumerize
   factory_girl_rails
   font-awesome-rails (~> 4.0.3)
+  foundation-rails
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails

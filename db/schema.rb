@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805081802) do
+ActiveRecord::Schema.define(version: 20140807063509) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140805081802) do
     t.float    "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "text"
   end
 
   add_index "votes", ["girl_id"], name: "index_votes_on_girl_id"

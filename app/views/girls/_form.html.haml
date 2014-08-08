@@ -7,30 +7,39 @@
       %ul
         - @girl.errors.full_messages.each do |message|
           %li= message
-  %section.inputs
-    %section.input
-      = f.label :first_name
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :first_name, class: "right inline"
+    %div{class: "small-3 columns left inline"}
       = f.text_field :first_name
-    %section.input
-      = f.label :last_name
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :last_name, class: "right inline"
+    %div{class: "small-3 columns left inline"}
       = f.text_field :last_name
-    %section.input
-      = f.label :description
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :description, class: "right inline"
+    %div{class: "small-3 columns left inline"}
       = f.text_area :description
-    %section.input
-      = f.label :vk
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :vk, class: "right inline"
+    %div{class: "small-3 columns left inline"}
       = f.url_field :vk
-    %section.input
-      = f.label "photo url"
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label "photo url", class: "right inline"
+    %div{class: "small-3 columns left inline"}
       = f.text_field :remote_photo_url
 
-    = f.fields_for :votes do |vote_form|
-      = vote_form.label :value
-      %br
-      = vote_form.text_field :value
-
-  %section.actions
+  %div.row
     - if controller.action_name == "new"
-      = f.submit 'Создать грязнульку', class: 'button'
+      %div{class: "small-9 small-offset-3 columns"}
+        = f.submit 'Create girl', class: 'button success radius'
     - else
-      = f.submit 'Обновить грязнульку', class: 'button'
+      %div{class: "small-9 small-offset-3 columns"}
+        = f.submit 'Update girl', class: "small button success radius"
+
+  %div.nav
+    = link_to 'Back', girls_path

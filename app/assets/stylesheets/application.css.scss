@@ -12,6 +12,8 @@
  *
  *= require font-awesome
  *= require_self
+ //= require foundation_and_overrides
+
  */
 
 @import 'reset';
@@ -25,3 +27,7 @@ $desktop: new-breakpoint(min-width 960px 12);
 @import 'layouts/layout';
 
 @import 'typography';
+
+@import 'girls/index';
+@import 'girls/form';
+@import 'girls/show';
