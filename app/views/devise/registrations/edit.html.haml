@@ -2,35 +2,45 @@
   Edit #{resource_name.to_s.humanize}
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f|
   = devise_error_messages!
-  %div
-    = f.label :name
-    %br/
-    = f.text_field :name, autofocus: true
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :name
+    %div{class: "small-3 columns left inline"}
+      = f.text_field :name, autofocus: true
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :email
+    %div{class: "small-3 columns left inline"}
+      = f.email_field :email, autofocus: true
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
+    %div.row
       Currently waiting confirmation for: #{resource.unconfirmed_email}
-  %div
-    = f.label "photo url"
-    %br/
-    = f.text_field :remote_photo_url, autofocus: true
-  %div
-    = f.label :password
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label "photo url"
+    %div{class: "small-3 columns left inline"}
+      = f.text_field :remote_photo_url, autofocus: true
     %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  %div
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  %div
-    = f.label :current_password
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :password
+    %div{class: "small-3 columns left inline"}
+      = f.password_field :password, autocomplete: "off"
+    %i (leave blank if you don't want to change it)
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :password_confirmation
+    %div{class: "small-3 columns left inline"}
+      = f.password_field :password_confirmation, autocomplete: "off"
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.label :current_password
+    %div{class: "small-3 columns left inline"}
+      = f.password_field :current_password, autocomplete: "off"
     %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  %div= f.submit "Update", class: 'button'
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.submit "Update", class: "small button radius"
 
-= link_to "Back", :back
+%div.nav
+  = link_to "Back", :back

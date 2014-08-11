@@ -15,7 +15,7 @@ class Girl < ActiveRecord::Base
   end
 
   def ready_for_vote_calculating?
-    if votes.count == 4
+    if votes.count == User.all.count
       true
     else
       false
@@ -31,12 +31,6 @@ class Girl < ActiveRecord::Base
 
       modified_array = array.inject{|sum,x| sum + x }
       (modified_array / User.all.count).round(1)
-    end
-  end
-
-  def has_been_voted?(user)
-    if votes.where(user_id: user.id).first
-      true
     end
   end
 

@@ -1,6 +1,34 @@
 article#girl
-  section.users-votes
-    margin-top: 50px
-    margin-left: 40px
-    section.vote
+  h1
+    text-align: center
+    span
+      margin-left: 20px
+  section.nav
+    margin-top: 0
+    font-size: 12px
+    text-align: center
+  section.info
+    @include row
+    section.attribute
+      margin-top: 40px
       margin-bottom: 40px
+    section#photo
+      @include span-columns(4)
+      img
+        width: 260px
+        border-radius: 10px
+    section#description
+      @include span-columns(8)
+      p
+        margin-bottom: 30px
+
+  section.users-votes
+    @include span-columns(5)
+    margin-top: 40px
+    section.vote
+      margin-top: 20px
+      background-color: #C5EEFC
+      border-radius: 10px
+      p
+        padding: 10px
+        margin: 0

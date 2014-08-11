@@ -1,0 +1,21 @@
+%h2 Sign in
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  %div.row
+    %div{class: "small-1 columns"}
+      = f.label :email
+    %div{class: "small-3 columns left inline"}
+      = f.email_field :email, autofocus: true
+  %div.row
+    %div{class: "small-1 columns"}
+      = f.label :password
+    %div{class: "small-3 columns left inline"}
+      = f.password_field :password, autocomplete: "off"
+  - if devise_mapping.rememberable?
+    %div.row
+      %div
+        = f.check_box :remember_me
+        = f.label :remember_me
+  %div.row
+    %div{class: "small-3 columns"}
+      = f.submit "Sign in", class: "small button radius"
+= render "devise/shared/links"

@@ -9,6 +9,7 @@ class GirlsController < ApplicationController
   def show
     @vote = current_user.votes.where(girl_id: @girl.id).first
     @users = User.all
+    @users_except_me = User.all - User.where(id: current_user.id)
   end
 
   def new

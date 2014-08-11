@@ -32,14 +32,15 @@
       = f.label "photo url", class: "right inline"
     %div{class: "small-3 columns left inline"}
       = f.text_field :remote_photo_url
+    %i (leave blank if you don't want to change it)
 
   %div.row
     - if controller.action_name == "new"
       %div{class: "small-9 small-offset-3 columns"}
-        = f.submit 'Create girl', class: 'button success radius'
+        = f.submit 'Create girl', class: 'small button radius'
     - else
       %div{class: "small-9 small-offset-3 columns"}
-        = f.submit 'Update girl', class: "small button success radius"
+        = f.submit 'Update girl', class: "small button radius"
 
   %div.nav
-    = link_to 'Back', girls_path
+    = link_to 'Main Page', girls_path
