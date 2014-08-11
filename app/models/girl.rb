@@ -23,13 +23,15 @@ class Girl < ActiveRecord::Base
   end
 
   def rank
-    array = []
-    votes.each do |vote|
-      array << vote.value
-    end
+    if ready_for_vote_calculating?
+      array = []
+      votes.each do |vote|
+        array << vote.value
+      end
 
-    modified_array = array.inject{|sum,x| sum + x }
-    (modified_array / 4).round(1)
+      modified_array = array.inject{|sum,x| sum + x }
+      (modified_array / User.all.count).round(1)
+    end
   end
 
   def has_been_voted?(user)
