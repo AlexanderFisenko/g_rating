@@ -1,46 +1,48 @@
 = form_for @girl, html: { id: 'girl-form', multipart: true } do |f|
   - if @girl.errors.any?
-    #error_explanation
+    %div.alert-box.alert.radius{"data-alert" => true}
       %h2
         = pluralize(@girl.errors.count, "error")
         prohibited this product from being saved:
       %ul
         - @girl.errors.full_messages.each do |message|
           %li= message
+      %a.close{:href => "#"} &times;
+  / = link_to "&times;", "#", class: "close"
   %div.row
-    %div{class: "small-3 columns"}
-      = f.label :first_name, class: "right inline"
+    %div{class: "small-2 columns"}
+      = f.label :first_name
     %div{class: "small-3 columns left inline"}
       = f.text_field :first_name
   %div.row
-    %div{class: "small-3 columns"}
-      = f.label :last_name, class: "right inline"
+    %div{class: "small-2 columns"}
+      = f.label :last_name
     %div{class: "small-3 columns left inline"}
       = f.text_field :last_name
   %div.row
-    %div{class: "small-3 columns"}
-      = f.label :description, class: "right inline"
+    %div{class: "small-2 columns"}
+      = f.label :description
     %div{class: "small-3 columns left inline"}
       = f.text_area :description
   %div.row
-    %div{class: "small-3 columns"}
-      = f.label :vk, class: "right inline"
+    %div{class: "small-2 columns"}
+      = f.label :vk
     %div{class: "small-3 columns left inline"}
       = f.url_field :vk
   %div.row
-    %div{class: "small-3 columns"}
-      = f.label "photo url", class: "right inline"
+    %div{class: "small-2 columns"}
+      = f.label "photo url"
     %div{class: "small-3 columns left inline"}
       = f.text_field :remote_photo_url
     %i (leave blank if you don't want to change it)
 
   %div.row
     - if controller.action_name == "new"
-      %div{class: "small-9 small-offset-3 columns"}
+      %div{class: "small-9 small columns"}
         = f.submit 'Create girl', class: 'small button radius'
     - else
-      %div{class: "small-9 small-offset-3 columns"}
+      %div{class: "small-9 small columns"}
         = f.submit 'Update girl', class: "small button radius"
 
   %div.nav
-    = link_to 'Main Page', girls_path
+    = link_to 'Back', girls_path

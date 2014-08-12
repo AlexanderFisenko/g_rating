@@ -1,14 +1,21 @@
 = form_for [@girl, @vote] do |f|
   %section.inputs
-    %section.input
-      = f.label :value, "Rating"
-      = f.text_field :value
-    %section.input
-      = f.label :text, "Argument"
-      = f.text_area :text
+    %div.row
+      %div{class: "small-1 columns"}
+        = f.label :value, "Rating"
+      %div{class: "small-1 columns left inline"}
+        = f.text_field :value
+    %div.row
+      %div{class: "small-1 columns"}
+        = f.label :text, "Argument"
+      %div{class: "small-5 columns left inline"}
+        = f.text_area :text
 
-  %section.actions
+  %div.row
+    %div{class: "small-3 columns"}
     - if controller.action_name == "new"
-      = f.submit 'Create', class: 'button'
+      = f.submit 'Create', class: "small button radius"
     - else
-      = f.submit 'Update', class: 'button'
+      = f.submit 'Update', class: "small button radius"
+  %div.nav
+    = link_to 'Back', girl_path(@girl)

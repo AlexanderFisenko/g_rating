@@ -2,22 +2,27 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   %div.row
-    %div{class: "small-3 columns"}
+    %div{class: "small-2 columns"}
       = f.label :name
     %div{class: "small-3 columns left inline"}
       = f.text_field :name, autofocus: true
   %div.row
-    %div{class: "small-3 columns"}
+    %div{class: "small-2 columns"}
       = f.label :email
     %div{class: "small-3 columns left inline"}
       = f.email_field :email, autofocus: true
   %div.row
-    %div{class: "small-3 columns"}
+    %div{class: "small-2 columns"}
+      = f.label :remote_photo_url
+    %div{class: "small-3 columns left inline"}
+      = f.email_field :remote_photo_url, autofocus: true
+  %div.row
+    %div{class: "small-2 columns"}
       = f.label :password
     %div{class: "small-3 columns left inline"}
       = f.password_field :password, autocomplete: "off"
   %div.row
-    %div{class: "small-3 columns"}
+    %div{class: "small-2 columns"}
       = f.label :password_confirmation
     %div{class: "small-3 columns left inline"}
       = f.password_field :password_confirmation, autocomplete: "off"
@@ -25,3 +30,4 @@
     %div{class: "small-3 columns"}
       = f.submit "Sign up", class: "small button radius"
 = render "devise/shared/links"
+

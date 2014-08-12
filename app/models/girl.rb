@@ -8,6 +8,7 @@ class Girl < ActiveRecord::Base
   validates :first_name, format: { with: /\A[а-яА-Я]+\z/, message: "only allows letters" }, presence: true
   validates :last_name,  format: { with: /\A[а-яА-Я]+\z/, message: "only allows letters" }, presence: true, uniqueness: true, uniqueness: { case_sensitive: false }
   validates :vk, presence: true, uniqueness: true
+  validates :photo, presence: true
 
 
   def name
@@ -23,15 +24,7 @@ class Girl < ActiveRecord::Base
   end
 
   def rank
-    if ready_for_vote_calculating?
-      array = []
-      votes.each do |vote|
-        array << vote.value
-      end
-
-      modified_array = array.inject{|sum,x| sum + x }
-      (modified_array / User.all.count).round(1)
-    end
+    (votes.sum(:value) / votes.count).round(1)
   end
 
   def not_voted_users

@@ -23,12 +23,33 @@ article#girl
         margin-bottom: 30px
 
   section.users-votes
-    @include span-columns(5)
+    width: 480px
     margin-top: 40px
-    section.vote
-      margin-top: 20px
-      background-color: #C5EEFC
-      border-radius: 10px
-      p
-        padding: 10px
-        margin: 0
+    section.user
+      @include row(table)
+      margin-bottom: 30px
+      section.photo
+        @include span-columns(3, table)
+        vertical-align: middle
+        img
+          border-radius: 10px
+
+      section.vote
+        @include span-columns(9, table)
+        background-color: #C5EEFC
+        border-radius: 10px
+        p
+          padding: 10px
+          margin: 0
+
+  section.not-voted-users
+    h3
+      margin: 30px 0 30px 0
+
+  p.back
+    margin-top: 80px
+    i
+      font-size: 40px
+      color: #008cba
+      &:hover
+        color: #007095

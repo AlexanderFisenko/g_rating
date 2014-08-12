@@ -8,7 +8,7 @@
     = link_to "[edit]", edit_girl_path(@girl)
   %section.info
     %section{class: "attribute", id: "photo"}
-      = link_to image_tag(@girl.photo.url(:small)), @girl.vk
+      = link_to image_tag(@girl.photo.url(:medium)), @girl.vk
     %section{class: "attribute", id: "description"}
       %p Объективное описание: #{@girl.description}
       - if @vote
@@ -24,13 +24,22 @@
   - if @girl.ready_for_vote_calculating?
     %section.users-votes
       - @users_except_me.each do |user|
-        %section.vote
-          %p #{user.name}:
-          %p #{@girl.votes.find_by(user_id: user.id).value} баллов
-          %p= @girl.votes.find_by(user_id: user.id).text
+        %section.user
+          %section.photo
+            = image_tag(user.photo.url(:small))
+          %section.vote
+            %p #{user.name}:
+            %p #{@girl.votes.find_by(user_id: user.id).value} баллов
+            %p= @girl.votes.find_by(user_id: user.id).text
   - else
     %section.not-voted-users
       %h3 Еще не раскидали:
       - @girl.not_voted_users.each do |not_voted_user|
-        %section.not-voted-user
+        %p
           = not_voted_user.name
+
+
+  %p.back
+    = link_to girls_path do
+      %i{class: "fa fa-arrow-left"}
+

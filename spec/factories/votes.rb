@@ -5,5 +5,6 @@ FactoryGirl.define do
     user nil
     girl nil
     value 1
+    text "some text"
   end
 end

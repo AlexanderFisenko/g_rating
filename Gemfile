@@ -50,7 +50,19 @@ gem 'pry'
 
 gem 'enumerize'
 
-gem 'rspec-rails'
-gem 'factory_girl_rails'
-
 gem 'foundation-rails'
+
+group :test, :development do
+  gem 'spring-commands-rspec'
+  gem 'factory_girl_rails', '>= 4.2'
+  gem 'rspec-rails', '~> 3.0.0.beta2'
+  gem 'rspec-mocks', '~> 3.0.0.beta2'
+  gem 'launchy'
+  gem 'ffaker'
+  gem 'letter_opener'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-rspec', '~> 4.2.2', require: false
+end
