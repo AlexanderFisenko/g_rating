@@ -23,7 +23,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: kuranty_production
+  database: raskidka_production
 
 
 
