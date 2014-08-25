@@ -31,13 +31,11 @@
               = link_to "Login", new_user_session_path
 
     - if notice
-      %section.flash
-        %span.alert-box.success
-          = notice
+      %section.flash.alert-box.success
+        = notice
     - if alert
-      %section.flash
-        %span.alert-box.alert
-          = alert
+      %section.flash.alert-box.alert
+        = alert
 
     %section#body
       = yield
