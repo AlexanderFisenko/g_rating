@@ -11,11 +11,16 @@
       = f.label :email
     %div{class: "small-3 columns left inline"}
       = f.email_field :email, autofocus: true
+  / %div.row
+  /   %div{class: "small-2 columns"}
+  /     = f.label :remote_photo_url
+  /   %div{class: "small-3 columns left inline"}
+  /     = f.text_field :remote_photo_url, autofocus: true
   %div.row
     %div{class: "small-2 columns"}
-      = f.label :remote_photo_url
+      = f.label :photolink
     %div{class: "small-3 columns left inline"}
-      = f.text_field :remote_photo_url, autofocus: true
+      = f.url_field :photolink, autofocus: true
   %div.row
     %div{class: "small-2 columns"}
       = f.label :password

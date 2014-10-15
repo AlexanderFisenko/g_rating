@@ -15,12 +15,17 @@
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     %div.row
       Currently waiting confirmation for: #{resource.unconfirmed_email}
+  / %div.row
+  /   %div{class: "small-3 columns"}
+  /     = f.label "photo url"
+  /   %div{class: "small-3 columns left inline"}
+  /     = f.text_field :remote_photo_url, autofocus: true
+  /   %i (leave blank if you don't want to change it)
   %div.row
-    %div{class: "small-3 columns"}
-      = f.label "photo url"
+    %div{class: "small-2 columns"}
+      = f.label :photolink
     %div{class: "small-3 columns left inline"}
-      = f.text_field :remote_photo_url, autofocus: true
-    %i (leave blank if you don't want to change it)
+      = f.url_field :photolink, autofocus: true
   %div.row
     %div{class: "small-3 columns"}
       = f.label :password

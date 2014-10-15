@@ -8,7 +8,7 @@
     = link_to "[edit]", edit_girl_path(@girl)
   %section.info
     %section{class: "attribute", id: "photo"}
-      = link_to image_tag(@girl.photo.url(:medium)), @girl.vk
+      = link_to image_tag(@girl.photolink), @girl.vk
     %section{class: "attribute", id: "description"}
       %p Объективное описание: #{@girl.description}
       - if @vote
@@ -26,7 +26,7 @@
       - @users_except_me.each do |user|
         %section.user
           %section.photo
-            = image_tag(user.photo.url(:small))
+            = image_tag(user.photolink)
           %section.vote
             %p #{user.name}:
             %p #{@girl.votes.find_by(user_id: user.id).value} баллов

@@ -29,12 +29,17 @@
       = f.label :vk
     %div{class: "small-3 columns left inline"}
       = f.url_field :vk
+  / %div.row
+  /   %div{class: "small-2 columns"}
+  /     = f.label "photo url"
+  /   %div{class: "small-3 columns left inline"}
+  /     = f.text_field :remote_photo_url
+  /   %i (leave blank if you don't want to change it)
   %div.row
     %div{class: "small-2 columns"}
-      = f.label "photo url"
+      = f.label :photolink
     %div{class: "small-3 columns left inline"}
-      = f.text_field :remote_photo_url
-    %i (leave blank if you don't want to change it)
+      = f.url_field :photolink
 
   %div.row
     - if controller.action_name == "new"

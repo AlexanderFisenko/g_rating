@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :girls, through: :votes
 
-  validates_presence_of :photo
+  validates_presence_of :photolink
 
 end

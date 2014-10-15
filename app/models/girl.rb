@@ -8,7 +8,7 @@ class Girl < ActiveRecord::Base
   validates :first_name, format: { with: /\A[а-яА-Я]+\z/, message: "only allows letters" }, presence: true
   validates :last_name,  format: { with: /\A[а-яА-Я]+\z/, message: "only allows letters" }, presence: true, uniqueness: true, uniqueness: { case_sensitive: false }
   validates :vk, presence: true, uniqueness: true
-  validates :photo, presence: true
+  validates :photolink, presence: true
 
 
   def name
