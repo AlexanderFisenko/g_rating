@@ -3,13 +3,19 @@ class GirlsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @girls = Girl.all.order(updated_at: :desc)
+    @girls = Girl.rated.order(updated_at: :desc)
+  end
+
+  def unrated
+    @girls = Girl.unrated.order(updated_at: :desc)
   end
 
   def show
     @vote = current_user.votes.where(girl_id: @girl.id).first
     @users = User.all
     @users_except_me = User.all - User.where(id: current_user.id)
+
+    @voted_users_except_me = @girl.users.where.not(id: current_user.id)
   end
 
   def new
@@ -50,6 +56,6 @@ class GirlsController < ApplicationController
     end
 
     def girl_params
-      params.require(:girl).permit(:first_name, :last_name, :description, :vk, :remote_photo_url, :photolink)
+      params.require(:girl).permit(:first_name, :last_name, :description, :vk, :remote_photo_url, :photolink, :rating)
     end
 end

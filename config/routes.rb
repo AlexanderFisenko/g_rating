@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users #, :path_names => { :sign_up => "registration", :sign_in => "login" }
 
   root 'girls#index'
+  get 'unrated' => 'girls#unrated', as: :unrated
 
 
 

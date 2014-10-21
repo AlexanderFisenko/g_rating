@@ -5,16 +5,21 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     = favicon_link_tag
     = favicon_link_tag 'favicon.png', rel: 'icon apple-touch-icon'
-    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
     = display_meta_tags site: ("Раскидка"), reverse: true, separator: '|'
+
   %body
     %nav.top-bar{data: { topbar: true }}
       %ul.title-area
         %li.name
           %h1
-            = link_to "Раскидка", root_path
+            = link_to "Раскиданные", root_path
+      %ul.title-area
+        %li.name
+          %h1
+            = link_to "Нераскиданные", unrated_path
       %section.top-bar-section
         - if user_signed_in?
           %ul.right

@@ -1,4 +1,12 @@
 = form_for [@girl, @vote] do |f|
+  - if @vote.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@vote.errors.count, "error")
+        prohibited this theme from being saved:
+      %ul
+        - @vote.errors.full_messages.each do |msg|
+          %li= msg
   %section.inputs
     %div.row
       %div{class: "small-1 columns"}

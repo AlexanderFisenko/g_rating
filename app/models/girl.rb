@@ -10,6 +10,9 @@ class Girl < ActiveRecord::Base
   validates :vk, presence: true, uniqueness: true
   validates :photolink, presence: true
 
+  scope :unrated, -> { where(rating: nil) }
+  scope :rated,   -> { where.not(rating: nil) }
+
 
   def name
     [first_name, last_name].join(' ')
@@ -23,7 +26,7 @@ class Girl < ActiveRecord::Base
     end
   end
 
-  def rank
+  def calculate_rating
     (votes.sum(:value) / votes.count).round(1)
   end
 

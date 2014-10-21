@@ -1,9 +1,9 @@
 %article#girl
   %h1
     #{@girl.name}
-    - if @girl.ready_for_vote_calculating?
+    - if @girl.rating?
       %span.rating
-        #{@girl.rank}
+        #{@girl.rating}
   %section.nav
     = link_to "[edit]", edit_girl_path(@girl)
   %section.info
@@ -21,9 +21,9 @@
       %p Раскидай ее быстрей!
       = link_to "Раскидать", new_girl_vote_path(@girl, @vote), class: 'small button radius'
 
-  - if @girl.ready_for_vote_calculating?
+  - if current_user.voted?(@girl)
     %section.users-votes
-      - @users_except_me.each do |user|
+      - @voted_users_except_me.each do |user|
         %section.user
           %section.photo
             = image_tag(user.photolink)
@@ -32,11 +32,7 @@
             %p #{@girl.votes.find_by(user_id: user.id).value} баллов
             %p= @girl.votes.find_by(user_id: user.id).text
   - else
-    %section.not-voted-users
-      %h3 Еще не раскидали:
-      - @girl.not_voted_users.each do |not_voted_user|
-        %p
-          = not_voted_user.name
+    %p Раскинешь.
 
 
   %p.back

@@ -1,0 +1,8 @@
+%article#girls-unrated
+  %h1
+    Ждут своего часа:
+  %table
+    - @girls.each do |girl|
+      %tr
+        %td
+          = link_to girl.name, girl
