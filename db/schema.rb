@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20141021154422) do
     t.string   "name"
     t.string   "photo"
     t.string   "photolink"
-    t.integer  "votes_count"
+    t.integer  "votes_count",            default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
