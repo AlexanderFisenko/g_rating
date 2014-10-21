@@ -8,7 +8,7 @@
     = link_to "[edit]", edit_girl_path(@girl)
   %section.info
     %section{class: "attribute", id: "photo"}
-      = link_to image_tag(@girl.photolink), @girl.vk
+      = link_to image_tag(@girl.photolink), @girl.vk, target: "_blank"
     %section{class: "attribute", id: "description"}
       %p Объективное описание: #{@girl.description}
       - if @vote

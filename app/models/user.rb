@@ -1,12 +1,7 @@
 class User < ActiveRecord::Base
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  if Rails.env.production?
-    devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
-  else
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  end
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable    #,:registerable
+
 
   mount_uploader :photo, UserPhotoUploader
 
@@ -14,6 +9,13 @@ class User < ActiveRecord::Base
   has_many :girls, through: :votes
 
   validates_presence_of :photolink
+
+  def self.leonid
+    votes_count = User.minimum(:votes_count)
+    if User.find_by(votes_count: votes_count)
+      User.find_by(votes_count: votes_count)
+    end
+  end
 
   def voted?(girl)
     votes.where(girl_id: girl.id).present?

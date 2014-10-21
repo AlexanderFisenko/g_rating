@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015082208) do
+ActiveRecord::Schema.define(version: 20141021154422) do
 
   create_table "girls", force: true do |t|
     t.string   "first_name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20141015082208) do
     t.string   "name"
     t.string   "photo"
     t.string   "photolink"
+    t.integer  "votes_count"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
