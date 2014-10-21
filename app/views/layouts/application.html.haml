@@ -22,9 +22,6 @@
             = link_to "Нераскиданные", unrated_path
       %section.top-bar-section
         - if user_signed_in?
-          %ul.right
-            %li
-              = link_to "Edit profile", edit_user_registration_path
             %li
               = link_to "Logout", destroy_user_session_path, method: :delete
           %div.user-name
@@ -32,8 +29,6 @@
               = current_user.name
         - else
           %ul.right
-            %li
-              = link_to "Registration", new_user_registration_path
             %li
               = link_to "Login", new_user_session_path
 
