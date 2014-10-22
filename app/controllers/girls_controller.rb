@@ -11,11 +11,10 @@ class GirlsController < ApplicationController
   end
 
   def show
-    @vote = current_user.votes.where(girl_id: @girl.id).first
-    @users = User.all
-    @users_except_me = User.all - User.where(id: current_user.id)
-
-    @voted_users_except_me = @girl.users.where.not(id: current_user.id)
+    @vote                      = current_user.votes.where(girl_id: @girl.id).first
+    @users                     = User.all
+    @users_except_me           = User.all - User.where(id: current_user.id)
+    @voted_users_except_me     = @girl.users.where.not(id: current_user.id)
   end
 
   def new

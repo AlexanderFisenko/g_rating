@@ -32,8 +32,12 @@
             %p #{@girl.votes.find_by(user_id: user.id).value} баллов
             %p= @girl.votes.find_by(user_id: user.id).text
   - else
-    %p Раскинешь.
-
+    %p Раскидаешь.
+    %p А они уже это сделали и спокойно двигаются дальше:
+    - @voted_users_except_me.each do |user|
+      %section.user
+        %section.vote
+          = user.name
 
   %p.back
     = link_to girls_path do
