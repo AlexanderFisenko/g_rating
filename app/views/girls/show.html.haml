@@ -33,11 +33,15 @@
             %p= @girl.votes.find_by(user_id: user.id).text
   - else
     %p Раскидаешь.
-    %p А они уже это сделали и спокойно двигаются дальше:
-    - @voted_users_except_me.each do |user|
-      %section.user
-        %section.vote
-          = user.name
+    - if @voted_users_except_me.any?
+      %p А они уже это сделали и спокойно двигаются дальше:
+      - @voted_users_except_me.each do |user|
+        %section.user
+          %section.vote
+            = user.name
+    - else
+      %p До этого момента еще никто не смог ее раскидать...
+      %p Именно сейчас у тебя появляется уникальная возможнсть стать первым и при желании навязать свое мнение другим!
 
   %p.back
     = link_to girls_path do
