@@ -4,6 +4,8 @@ class Girl < ActiveRecord::Base
 
   has_many :votes, dependent: :destroy
   has_many :users, through: :votes
+  has_many :comments
+
 
   validates :first_name, format: { with: /\A[а-яА-Я]+\z/, message: "only allows letters" }, presence: true
   validates :last_name,  format: { with: /\A[а-яА-Я]+\z/, message: "only allows letters" }, presence: true, uniqueness: true, uniqueness: { case_sensitive: false }

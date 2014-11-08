@@ -31,6 +31,21 @@
             %p #{user.name}:
             %p #{@girl.votes.find_by(user_id: user.id).value} баллов
             %p= @girl.votes.find_by(user_id: user.id).text
+    %section.comments
+      - @comments.each do |comment|
+        %section.comment
+          %p.name
+            = "#{comment.user.name}:"
+          %p
+            = comment.text
+      = form_for @girl.comments.new do |f|
+        %div.row
+          %div{class: "big-8 columns left inline"}
+            = f.text_area :text, rows: 8
+            = f.hidden_field :girl_id, value: @girl.id
+        %div.row
+          = f.submit 'Create comment', class: 'small button radius'
+
   - else
     %p Раскидаешь.
     - if @voted_users_except_me.any?

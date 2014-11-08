@@ -1,4 +1,5 @@
 article#girl
+  @include row
   h1
     text-align: center
     span
@@ -23,7 +24,7 @@ article#girl
         margin-bottom: 30px
 
   section.users-votes
-    width: 480px
+    @include span-columns(6)
     margin-top: 40px
     section.user
       @include row(table)
@@ -42,6 +43,17 @@ article#girl
         p
           padding: 10px
           margin: 0
+
+  section.comments
+    @include span-columns(6)
+    form
+      margin-top: 50px
+    .comment
+      margin-bottom: 8px
+      p
+        margin-bottom: 0px
+        &.name
+          font-weight: 700
 
   section.not-voted-users
     h3
