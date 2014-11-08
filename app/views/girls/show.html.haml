@@ -38,13 +38,7 @@
             = "#{comment.user.name}:"
           %p
             = comment.text
-      = form_for @girl.comments.new do |f|
-        %div.row
-          %div{class: "small-8 columns left inline"}
-            = f.text_area :text
-            = f.hidden_field :girl_id, value: @girl.id
-        %div.row
-          = f.submit 'Create comment', class: 'small button radius'
+      
 
   - else
     %p Раскидаешь.
