@@ -21,42 +21,43 @@
       %p Раскидай ее быстрей!
       = link_to "Раскидать", new_girl_vote_path(@girl, @vote), class: 'small button radius'
 
-  - if current_user.voted?(@girl)
-    %section.users-votes
-      - @voted_users_except_me.each do |user|
-        %section.user
-          %section.photo
-            = image_tag(user.photolink)
-          %section.vote
-            %p #{user.name}:
-            %p #{@girl.votes.find_by(user_id: user.id).value} баллов
-            %p= @girl.votes.find_by(user_id: user.id).text
-    %section.comments
-      - @comments.each do |comment|
-        %section.comment
-          %p.name
-            = "#{comment.user.name}:"
-          %p
-            = comment.text
-      = form_for @girl.comments.new do |f|
-        %div.row
-          %div{class: "big-8 columns left inline"}
-            = f.text_area :text, rows: 8
-            = f.hidden_field :girl_id, value: @girl.id
-        %div.row
-          = f.submit 'Create comment', class: 'small button radius'
+  %section.content
+    - if current_user.voted?(@girl)
+      %section.users-votes
+        - @voted_users_except_me.each do |user|
+          %section.user
+            %section.photo
+              = image_tag(user.photolink)
+            %section.vote
+              %p #{user.name}:
+              %p #{@girl.votes.find_by(user_id: user.id).value} баллов
+              %p= @girl.votes.find_by(user_id: user.id).text
+      %section.comments
+        - @comments.each do |comment|
+          %section.comment
+            %p.name
+              = "#{comment.user.name}:"
+            %p
+              = comment.text
+        = form_for @girl.comments.new do |f|
+          %div.row
+            %div{class: "big-8 columns left inline"}
+              = f.text_area :text, rows: 8
+              = f.hidden_field :girl_id, value: @girl.id
+          %div.row
+            = f.submit 'Create comment', class: 'small button radius'
 
-  - else
-    %p Раскидаешь.
-    - if @voted_users_except_me.any?
-      %p А они уже это сделали и спокойно двигаются дальше:
-      - @voted_users_except_me.each do |user|
-        %section.user
-          %section.vote
-            = user.name
     - else
-      %p До этого момента еще никто не смог ее раскидать...
-      %p Именно сейчас у тебя появляется уникальная возможнсть стать первым и при желании навязать свое мнение другим!
+      %p Раскидаешь.
+      - if @voted_users_except_me.any?
+        %p А они уже это сделали и спокойно двигаются дальше:
+        - @voted_users_except_me.each do |user|
+          %section.user
+            %section.vote
+              = user.name
+      - else
+        %p До этого момента еще никто не смог ее раскидать...
+        %p Именно сейчас у тебя появляется уникальная возможнсть стать первым и при желании навязать свое мнение другим!
 
   %p.back
     = link_to girls_path do
