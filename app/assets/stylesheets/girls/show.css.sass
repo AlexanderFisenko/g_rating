@@ -47,14 +47,28 @@ article#girl
 
     section.comments
       @include span-columns(6)
-      form
-        margin-top: 50px
-      .comment
-        margin-bottom: 8px
-        p
-          margin-bottom: 0px
-          &.name
-            font-weight: 700
+      h2
+        text-align: center
+        margin-bottom: 40px
+        margin-top: 40px
+      section.user
+        @include row(table)
+        margin-bottom: 30px
+        section.photo
+          @include span-columns(3, table)
+          vertical-align: middle
+          img
+            border-radius: 10px
+            height: 100px
+
+        section.vote
+          @include span-columns(9, table)
+          background-color: #C5EEFC
+          border-radius: 10px
+          p
+            padding: 10px
+            margin: 0
+
 
     section.not-voted-users
       h3

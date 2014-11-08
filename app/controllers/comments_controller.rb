@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.update user_id: current_user.id
 
     if @comment.save
-      redirect_to girl_path(@comment.girl), notice: 'A new comment was successfully created.'
+      redirect_to girl_path(@comment.girl, anchor: 'input'), notice: 'A new comment was successfully created.'
     end
   end
 

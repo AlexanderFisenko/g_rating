@@ -24,6 +24,7 @@
   %section.content
     - if current_user.voted?(@girl)
       %section.users-votes
+        %h2 Раскидывание:
         - @voted_users_except_me.each do |user|
           %section.user
             %section.photo
@@ -33,12 +34,15 @@
               %p #{@girl.votes.find_by(user_id: user.id).value} баллов
               %p= @girl.votes.find_by(user_id: user.id).text
       %section.comments
+        %h2 Комменты:
         - @comments.each do |comment|
-          %section.comment
-            %p.name
-              = "#{comment.user.name}:"
-            %p
-              = comment.text
+          %section.user
+            %section.photo
+              = image_tag(comment.user.photolink)
+            %section.vote
+              %p #{comment.user.name}:
+              %p 
+                = comment.text
         = form_for @girl.comments.new do |f|
           %div.row
             %div{class: "big-8 columns left inline"}
